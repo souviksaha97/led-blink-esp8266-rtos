@@ -3,10 +3,32 @@
 	{
 		"selected_items":
 		[
+			[
+				"LED",
+				"LED_2"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "main/main.c",
+			"settings":
+			{
+				"buffer_size": 1141,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 18,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -44,16 +66,24 @@
 		"selected_items":
 		[
 			[
+				"ter",
+				"Terminal: Open in project folder"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"term",
+				"Terminal: Open in project folder"
+			],
+			[
 				"prv",
 				"PackageResourceViewer: Open Resource"
 			],
 			[
 				"pack",
 				"Package Control: Install Package"
-			],
-			[
-				"term",
-				"Terminal: Open in project folder"
 			],
 			[
 				"build",
@@ -80,10 +110,12 @@
 	},
 	"expanded_folders":
 	[
-		"/home/subir/git/led-blink-esp8266-rtos"
+		"/home/subir/git/led-blink-esp8266-rtos",
+		"/home/subir/git/led-blink-esp8266-rtos/main"
 	],
 	"file_history":
 	[
+		"/home/subir/git/led-blink-esp8266-rtos/build/esp8266/driver/gpio.d",
 		"/home/subir/.config/sublime-text-3/Packages/User/ESP.sublime-build",
 		"/home/subir/esp/hello_world/main/hello_world_main.c"
 	],
@@ -120,8 +152,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "main/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/C++/C.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 223.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -177,6 +268,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"gpio",
+				"build/esp8266/driver/gpio.d"
+			]
 		],
 		"width": 0.0
 	},
