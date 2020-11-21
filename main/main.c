@@ -1,90 +1,50 @@
 #include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
 
-#define LED_1 GPIO_Pin_16
-#define LED_2 GPIO_Pin_2
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+#include <driver/gpio.h>
 
-#define BUTTON GPIO_Pin_5
+#include <ssd1306/ssd1306.h>
+#include <driver/i2c.h>
+#include <esp_err.h>
 
-void vLED_2_Task(void *pvParameters);
-void vButton_Task(void *pvParameters);
+#define SCL_PIN 5
+#define SDA_PIN 4
+#define DISPLAY_WIDTH 128
+#define DISPLAY_HEIGHT 64
 
-void GPIO_Init(void);
+uint8_t buff[DISPLAY_HEIGHT*DISPLAY_WIDTH/8];
 
-void app_main(void)
+void app_main()
 {
-    GPIO_Init();
+    // init i2s
+    int i2c_master_port = I2C_NUM_0;
+    i2c_config_t conf;
+    conf.mode = I2C_MODE_MASTER;
+    conf.sda_io_num = SDA_PIN;
+    conf.sda_pullup_en = 1;
+    conf.scl_io_num = SCL_PIN;
+    conf.scl_pullup_en = 1;
+    conf.clk_stretch_tick = 300;
+    ESP_ERROR_CHECK(i2c_driver_install(i2c_master_port, conf.mode));
+    ESP_ERROR_CHECK(i2c_param_config(i2c_master_port, &conf));
 
-    xTaskCreate(
-    	vLED_2_Task,
-    	"Led 2",
-    	configMINIMAL_STACK_SIZE+10,
-    	NULL,
-    	1,
-    	NULL
-    	);
-
-    xTaskCreate(
-    	vButton_Task,
-    	"Button",
-    	configMINIMAL_STACK_SIZE+10,
-    	NULL,
-    	1,
-    	NULL
-    	);
-}
-
-void vLED_1_Task(void *pvParameters)
-{
-	int level = 0;
-	while(1)
-	{
-		gpio_set_level(GPIO_NUM_16, level);
-		level = !level;
-		vTaskDelay(2000 / portTICK_PERIOD_MS);
-	}
-}
+    // init ssd1306
+    ssd1306_t dev = {
+        .i2c_port = i2c_master_port,
+        .i2c_addr = SSD1306_I2C_ADDR_0,
+        .screen = SH1106_SCREEN, // or SH1106_SCREEN
+        .width = DISPLAY_WIDTH,
+        .height = DISPLAY_HEIGHT};
 
 
-void vLED_2_Task(void *pvParameters)
-{
-	int level = 0;
-	while(1)
-	{
-		gpio_set_level(GPIO_NUM_2, level);
-		level = !level;
-		vTaskDelay(20 / portTICK_PERIOD_MS);
-	}
-}
 
-void vButton_Task(void *pvParameters)
-{
-	while(1)
-	{
-		gpio_set_level(GPIO_NUM_16, gpio_get_level(GPIO_NUM_5));
-		vTaskDelay(100 / portTICK_PERIOD_MS);
-	}
-}
-
-void GPIO_Init(void)
-{
-	gpio_config_t io_config;
-
-    io_config.intr_type = GPIO_INTR_DISABLE;
-    io_config.mode = GPIO_MODE_OUTPUT;
-    io_config.pin_bit_mask = ((1ULL << 16)|(1ULL << 2));
-    io_config.pull_down_en = 0;
-    io_config.pull_up_en = 0;
-    gpio_config(&io_config);
-
-
-    io_config.intr_type = GPIO_INTR_DISABLE;
-    io_config.mode = GPIO_MODE_INPUT;
-    io_config.pin_bit_mask = ((1ULL << 5));
-    io_config.pull_up_en = 1;
-    io_config.pull_down_en = 0;
-    gpio_config(&io_config);
+    printf("%d init\n",ssd1306_init(&dev));
+    printf("%d on\n",ssd1306_display_on(&dev,1));
+    printf("%d Circle", ssd1306_draw_circle(&dev, buff, 10, 20, 10, OLED_COLOR_WHITE));
+    ssd1306_load_frame_buffer(&dev, buff);
+    printf("Done\n");
+    fflush(stdout);
+    while(1);
 
 }
