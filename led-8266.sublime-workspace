@@ -41,28 +41,26 @@
 			}
 		},
 		{
-			"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/ESP8266-RTOS-SSD1306/ssd1306/ssd1306.c",
+			"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/esp_http_client.c",
 			"settings":
 			{
-				"buffer_size": 30203,
-				"encoding": "UTF-8",
+				"buffer_size": 50132,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/subir/Arduino/libraries/ACROBOTIC_SSD1306/ACROBOTIC_SSD1306.h",
+			"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/lib/include/http_header.h",
 			"settings":
 			{
-				"buffer_size": 3730,
+				"buffer_size": 3551,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/ESP8266-RTOS-SSD1306/ssd1306/ssd1306.h",
+			"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/include/esp_http_client.h",
 			"settings":
 			{
-				"buffer_size": 17262,
-				"encoding": "UTF-8",
+				"buffer_size": 21402,
 				"line_ending": "Unix"
 			}
 		}
@@ -103,15 +101,15 @@
 		"selected_items":
 		[
 			[
+				"term",
+				"Terminal: Open in project folder"
+			],
+			[
 				"te",
 				"Terminal: Open in project folder"
 			],
 			[
 				"ter",
-				"Terminal: Open in project folder"
-			],
-			[
-				"term",
 				"Terminal: Open in project folder"
 			],
 			[
@@ -156,6 +154,12 @@
 	],
 	"file_history":
 	[
+		"/home/subir/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi.h",
+		"/home/subir/esp/ESP8266_RTOS_SDK/components/esp8266/source/esp_wifi.c",
+		"/home/subir/esp/ESP8266_RTOS_SDK/components/ESP8266-RTOS-SSD1306/ssd1306/ssd1306.h",
+		"/home/subir/Arduino/libraries/ACROBOTIC_SSD1306/ACROBOTIC_SSD1306.cpp",
+		"/home/subir/Arduino/libraries/ACROBOTIC_SSD1306/ACROBOTIC_SSD1306.h",
+		"/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/test/test_http_client.c",
 		"/home/subir/esp/hello_world/main/hello_world_main.c",
 		"/home/subir/git/led-blink-esp8266-rtos/README.md",
 		"/home/subir/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/gpio.h",
@@ -178,6 +182,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ESP_LOGD",
+			"TAG",
+			"url",
+			"esp_http_client_config_t",
+			"font_info_t",
+			"ssd1306_color_t",
 			"draw",
 			"err =",
 			"sendCommand",
@@ -227,8 +237,8 @@
 						"selection":
 						[
 							[
-								1134,
-								1134
+								1096,
+								1096
 							]
 						],
 						"settings":
@@ -239,7 +249,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 455.0,
+						"translation.y": 374.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -247,19 +257,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/ESP8266-RTOS-SSD1306/ssd1306/ssd1306.c",
+					"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/esp_http_client.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 30203,
+						"buffer_size": 50132,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17453,
-								17455
+								639,
+								639
 							]
 						],
 						"settings":
@@ -270,19 +280,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8296.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/home/subir/Arduino/libraries/ACROBOTIC_SSD1306/ACROBOTIC_SSD1306.h",
+					"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/lib/include/http_header.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3730,
+						"buffer_size": 3551,
 						"regions":
 						{
 						},
@@ -296,32 +306,30 @@
 						"settings":
 						{
 							"show_definitions": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1018.0,
+						"translation.y": 910.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/ESP8266-RTOS-SSD1306/ssd1306/ssd1306.h",
+					"file": "/home/subir/esp/ESP8266_RTOS_SDK/components/esp_http_client/include/esp_http_client.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17262,
+						"buffer_size": 21402,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15073,
-								15073
+								4137,
+								4137
 							]
 						],
 						"settings":
@@ -332,7 +340,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1639.0,
+						"translation.y": 1387.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -343,7 +351,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -374,7 +382,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 145.0
+		"height": 151.0
 	},
 	"output.find_results":
 	{
@@ -384,7 +392,7 @@
 	"project": "led-8266.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
