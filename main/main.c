@@ -70,10 +70,9 @@ static void http_get_task(void *pvParameters)
 
 
 
-    printf("%d init\n",ssd1306_init(&dev));
-    printf("%d on\n",ssd1306_display_on(&dev,1));
-    // ssd1306_draw_string(&dev, buff, font_builtin_fonts[FONT_FACE_GLCD5x7], 5, 0, "Hello World!",
-    // OLED_COLOR_WHITE, OLED_COLOR_BLACK);
+    ssd1306_init(&dev);
+    ssd1306_display_on(&dev, true);
+
     
 
     printf("Done\n");
@@ -150,41 +149,56 @@ static void http_get_task(void *pvParameters)
             bzero(recv_buf, sizeof(recv_buf));
             r = read(s, recv_buf, sizeof(recv_buf)-1);
             // printf("%s\n", recv_buf);
-            char token[350];
-            char datetime[30];
+            int length = sizeof(recv_buf)/sizeof(recv_buf[0])-603;
+            char token[length];
+            // char datetime[30];
 
-            for (int i = 0; i < 350; i++)
+            // int total_length = sizeof(recv_buf)/sizeof(recv_buf[0])-603;
+
+            for (int i = 0; i < length; i++)
             {
                 token[i] = recv_buf[603+i];
             }
             // token = strtok(recv_buf, "\r\n\r\n");
             // token = strtok(0, "\r\n\r\n");
-            // printf("%s\n", token);
+            printf("%s\n", token);
             cJSON *root = cJSON_Parse(token);
-            strcpy(datetime,cJSON_GetObjectItemCaseSensitive(root, "datetime")->valuestring);
-            for (int i = 0; i < strlen(datetime); i++)
-            {
-                if (datetime[i] == 'T')
-                    datetime[i] = ' ';
-            }
-            printf("%s\n", datetime);
-            cJSON_Delete(root);
-            ssd1306_display_on(&dev, false);                                  
-            ssd1306_draw_string(&dev, buff, font_builtin_fonts[FONT_FACE_GLCD5x7], 5, 0, datetime,
+            const cJSON *json_Time = NULL;
+            json_Time = cJSON_GetObjectItemCaseSensitive(root, "datetime");
+            if (cJSON_IsString(json_Time) && (json_Time->valuestring != NULL))
+            {                                
+            
+            char *datetime = cJSON_GetObjectItemCaseSensitive(root, "datetime")->valuestring;
+
+            char *date = strtok(datetime, "T");
+
+            char *time = strtok(strtok(NULL, "T"), ".");
+            // char *time = strtok(NULL, "T");
+
+            printf("%s\n%s", date, time);
+
+            ssd1306_draw_string(&dev, buff, font_builtin_fonts[FONT_FACE_GLCD5x7], 5, 0, time,
+            OLED_COLOR_WHITE, OLED_COLOR_BLACK);
+            ssd1306_draw_string(&dev, buff, font_builtin_fonts[FONT_FACE_GLCD5x7], 5, 30, date,
             OLED_COLOR_WHITE, OLED_COLOR_BLACK);
             ssd1306_load_frame_buffer(&dev, buff);
             ssd1306_display_on(&dev, true);
             ssd1306_start_scroll_hori(&dev, true, 0, 1, FRAME_5);
+            // ssd1306_start_scroll_hori(&dev, true, 1, 2, FRAME_5);
+            }
+            cJSON_Delete(root);
+            
 
         } while(r > 0);
 
         ESP_LOGI(TAG, "... done reading from socket. Last read return=%d errno=%d\r\n", r, errno);
         close(s);
-        for(int countdown = 60; countdown >= 0; countdown--) {
+        for(int countdown = 10; countdown >= 0; countdown--) {
             ESP_LOGI(TAG, "%d... ", countdown);
             vTaskDelay(1000 / portTICK_PERIOD_MS);
         }
         ESP_LOGI(TAG, "Starting again!");
+        ssd1306_display_on(&dev, false);
     }
 }
 
